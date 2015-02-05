@@ -1,1 +1,1 @@
-# minecraft-mods-installer
+# minecraft-mods-downloader
