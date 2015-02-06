@@ -1,0 +1,72 @@
+LegacyJavaFixer:
+  server: true
+  client: true
+  version: 1.0
+  url:
+    - http://mirror.technicpack.net/Technic/mods/legacyjavafixer/legacyjavafixer-v1.0.zip
+
+BuildCraft:
+  server: true
+  client: true
+  version: 4.2.2
+  url:
+    - http://mirror.technicpack.net/Technic/mods/buildcraft/buildcraft-v4.2.2.zip
+
+
+ChickenChunks:
+  server: true
+  client: true
+  version: 1.3.3.3
+  url:
+    - http://mirror.technicpack.net/Technic/mods/chickenchunks/chickenchunks-v1.3.3.3.zip
+
+CodeChickenCore:
+  server: true
+  client: true
+  version: 0.9.0.7
+  url:
+    - http://mirror.technicpack.net/Technic/mods/codechickencore/codechickencore-v0.9.0.7.zip
+
+ComputerCraft:
+  server: true
+  client: true
+  version: 1.58
+  url:
+    - http://mirror.technicpack.net/Technic/mods/computercraft/computercraft-v1.58.zip
+
+CoFH Core:
+  server: true
+  client: true
+  version: 2.0.0.5
+  url:
+    - http://mirror.technicpack.net/Technic/mods/cofhcore/cofhcore-v2.0.0.5.zip
+
+Dimensional Anchors:
+  server: true
+  client: true
+  version: 57.1.95
+  url:
+    - http://mirror.technicpack.net/Technic/mods/dimanchor/dimanchor-v57.1.95.zip
+
+Equivalent Exchange 3:
+  server: true
+  client: true
+  version: 0.1.140
+  url:
+    - http://mirror.technicpack.net/Technic/mods/ee3/ee3-v0.1.140.zip
+
+
+
+# Not Enough Items:
+#   server: true
+#   client: true
+#   version: 1.6.1.8
+#   url:
+#     - http://chickenbones.net/maven/codechicken/NotEnoughItems/1.6.4-1.6.1.8/NotEnoughItems-1.6.4-1.6.1.8-universal.jar
+#     - http://chickenbones.net/maven/codechicken/NotEnoughItems/1.6.4-1.6.1.8/NotEnoughItems-1.6.4-1.6.1.8-universal.jar
+
+# Balkon's WeaponMod:
+#   version: 1.13.6
+#   url:
+#     - http://dl.dropbox.com/u/31316462/WeaponMod.zip
+#     - http://addons.curse.cursecdn.com/files/2203/182/WeaponMod v1.13.6.zip
