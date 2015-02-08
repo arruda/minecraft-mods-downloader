@@ -11,13 +11,14 @@ import zipfile
 import click
 import yaml
 
+from click import option
 
 MINECRAFT_PATH = "."
 CACHED_PATH = os.path.join(MINECRAFT_PATH, 'cache')
 MODS_PATH = os.path.join(MINECRAFT_PATH, 'mods')
 
 
-def read_mod_list():
+def read_mod_list(mod_list_path):
     stream = open("mod_list.yml", 'r')
     mod_list = yaml.load(stream)
     return mod_list
@@ -94,16 +95,22 @@ def ensure_paths_exist():
 
 
 @click.command()
-@click.option('--path',
+@click.option('-p',
+              'minecraft_path',
               default='.',
               type=click.Path(exists=True, dir_okay=True, resolve_path=True),
               help='Path to minecraft instalation directory')
+@click.option('-f',
+              'mod_list_path',
+              default='.',
+              type=click.Path(exists=True, file_okay=True, resolve_path=True),
+              help='Path to mod list yaml file')
 @click.option('--no-cache', is_flag=True,
               help='Do not use cache when installing mods')
-def install_mods(path, no_cache):
-    set_global_paths(path)
+def install_mods(minecraft_path, mod_list_path, no_cache):
+    set_global_paths(minecraft_path)
     ensure_paths_exist()
-    mod_list = read_mod_list()
+    mod_list = read_mod_list(mod_list_path)
 
     for mod, data in mod_list.items():
         working_mirror = get_mod_working_mirror(mod, data)
