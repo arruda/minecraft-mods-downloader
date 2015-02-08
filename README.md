@@ -53,6 +53,13 @@ Ex:
 mine_mods -p /home/my_user/.minecraft -f mod_list.yml
 ```
 
+or you can pass a the url of a mod list file, ex:
+
+
+```
+mine_mods -p /home/my_user/.minecraft -f http://somewhere.com/mod_list.yml
+```
+
 ## Don't use cache
 If you want to ensure the download of the mods, just add the `no-cached` flag when running the `mine_mods` command.
 

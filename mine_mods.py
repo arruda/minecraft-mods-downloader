@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from contextlib import closing
 import ntpath
 import os
 import shutil
@@ -11,16 +12,18 @@ import zipfile
 import click
 import yaml
 
-from click import option
-
 MINECRAFT_PATH = "."
 CACHED_PATH = os.path.join(MINECRAFT_PATH, 'cache')
 MODS_PATH = os.path.join(MINECRAFT_PATH, 'mods')
 
 
 def read_mod_list(mod_list_path):
-    stream = open("mod_list.yml", 'r')
-    mod_list = yaml.load(stream)
+    if 'http' in mod_list_path:
+        with closing(urllib2.urlopen(mod_list_path)) as f:
+            mod_list = yaml.load(f)
+    else:
+        with open(mod_list_path, 'r') as f:
+            mod_list = yaml.load(f)
     return mod_list
 
 
@@ -101,10 +104,11 @@ def ensure_paths_exist():
               type=click.Path(exists=True, dir_okay=True, resolve_path=True),
               help='Path to minecraft instalation directory')
 @click.option('-f',
+              '--url',
               'mod_list_path',
               default='.',
-              type=click.Path(exists=True, file_okay=True, resolve_path=True),
-              help='Path to mod list yaml file')
+              # type=click.Path(exists=True, file_okay=True, resolve_path=True),
+              help='Path (or url) to mod list yaml file')
 @click.option('--no-cache', is_flag=True,
               help='Do not use cache when installing mods')
 def install_mods(minecraft_path, mod_list_path, no_cache):

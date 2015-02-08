@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='minecraft-mods-downloader',
-    version='0.2',
+    version='0.5',
     description="Control minecraft mods download easily with this tool",
     py_modules=['mine_mods'],
     install_requires=[
