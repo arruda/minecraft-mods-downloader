@@ -107,7 +107,6 @@ def ensure_paths_exist():
               '--url',
               'mod_list_path',
               default='.',
-              # type=click.Path(exists=True, file_okay=True, resolve_path=True),
               help='Path (or url) to mod list yaml file')
 @click.option('--no-cache', is_flag=True,
               help='Do not use cache when installing mods')
@@ -116,6 +115,7 @@ def install_mods(minecraft_path, mod_list_path, no_cache):
     ensure_paths_exist()
     mod_list = read_mod_list(mod_list_path)
 
+    instaled_mod_versions = []
     for mod, data in mod_list.items():
         working_mirror = get_mod_working_mirror(mod, data)
         download_url = working_mirror.get('url')
@@ -126,8 +126,13 @@ def install_mods(minecraft_path, mod_list_path, no_cache):
             unzip_mod_to_mods_path(mod, filepath, working_mirror.get('extract_to'))
         else:
             copy_mod_to_mods_path(mod, filepath)
+        instaled_mod_versions.append(
+            "%(mod)s version:%(version)s" % {'mod': mod, 'version': data.get('version')}
+        )
+    click.echo("Installed:")
 
-        click.echo("Installed %(mod)s version:%(version)s" % {'mod': mod, 'version': data.get('version')})
+    for mod_version in instaled_mod_versions:
+        click.echo(mod_version)
 
     click.echo("Done!")
 
